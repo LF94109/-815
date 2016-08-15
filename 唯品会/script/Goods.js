@@ -25,7 +25,7 @@ Goods.prototype.load = function() {
 			}).appendTo($('.goods'))
 
 			//往div上添加img
-			.append($('<img>').attr('src', aGood.large_img).css({
+			.append($('<img class="large">').attr('src', aGood.large_img).css({
 				width: '100%',
 				position: 'absolute'
 			}))
@@ -45,14 +45,14 @@ Goods.prototype.load = function() {
 			//控制商品div的悬停效果
 			.hover(function() {
 
-				$(this).find('img').css({
+				$(this).find('.large').css({
 					filter: "blur(3px)"
 				})
 				$(this).find('.detailView').stop().fadeIn(300)
 
 			}, function() {
 
-				$(this).find('img').css({
+				$(this).find('.large').css({
 					filter: "blur(0)"
 				})
 				$(this).find('.detailView').stop().fadeOut(300)
@@ -74,17 +74,16 @@ Goods.prototype.load = function() {
 			})
 			
 			/*----------------------------------------------*/
+			/*小图片*/
+			/*var detail = aGood.detail
 			
-			
-			/*for (var k=0;k < agood.length;k++) {
+			for (var k=0;k < detail.length;k++) {
 				
-				var agood = aGood.detail[k]
+				var agood = detail[k]
 				
-				$('<img>').attr('src',agood).css({
-					width:'33.33%',
-					height:"297px"
-					position:'absolute'
-				}).appendTo($('.detailView'))
+				$('<img>').attr('src',agood.img).css({
+					width:'33.33%'
+				}).appendTo($("<a>").attr('href',aGood.url).appendTo('.detailView'))
 			}*/
 		}
 	})
