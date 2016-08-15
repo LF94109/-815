@@ -18,7 +18,7 @@ Goods.prototype.load = function() {
 			$('<div class="aGood">').css({
 				width: '50%',
 				height: '317px',
-				border: '1px red solid',
+				//border: '1px red solid',
 				paddingBottom: '10px',
 				float: 'left',
 				position: 'relative'
@@ -36,7 +36,7 @@ Goods.prototype.load = function() {
 				left: '20px',
 				top: '20px',
 				width: '460px',
-				//				margin:'10px auto',
+				//margin:'10px auto',
 				height: '267px',
 				backgroundColor: 'white',
 				display: 'none'
@@ -72,6 +72,20 @@ Goods.prototype.load = function() {
 
 				paddingRight: '10px'
 			})
+			
+			/*----------------------------------------------*/
+			
+			
+			/*for (var k=0;k < agood.length;k++) {
+				
+				var agood = aGood.detail[k]
+				
+				$('<img>').attr('src',agood).css({
+					width:'33.33%',
+					height:"297px"
+					position:'absolute'
+				}).appendTo($('.detailView'))
+			}*/
 		}
 	})
 
