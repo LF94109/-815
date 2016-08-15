@@ -1,3 +1,6 @@
+/*
+ * 用来加载数据比如：城市，我的收藏。。。。
+ */
 function TabView(){
 	
 	this.tabDatas = TabView.tabViewDatas.datas
@@ -20,3 +23,5 @@ TabView.prototype.checkDatas = function(index){
 	}
 	
 }
+
+MoreTabView.prototype.unload = function(){}

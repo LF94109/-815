@@ -1,4 +1,4 @@
-//给tabView扩充一个静态属性
+//给TabView扩充一个静态属性
 TabView.tabViewDatas = {
 	datas: [{
 

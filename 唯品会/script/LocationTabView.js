@@ -1,3 +1,6 @@
+/*
+ * 城市定位的下拉框数据
+ */
 function LocationTabView() {
 
 	TabView.call(this)
@@ -26,13 +29,25 @@ LocationTabView.prototype.load = function(index) {
 
 	console.log(left)
 	console.log(top)
-	
-	if(this.$tab){
-		
-		this.$tab.show()
-		
+
+	/*//监听窗口变化
+	$(window).resize(function() {
+
+		console.log('xxxxxx')
+		left = locationDiv.getBoundingClientRect().left + 'px'
+
+		top = locationDiv.getBoundingClientRect().bottom + 'px'
+	})
+
+	if(this.$tab) {
+
+		this.$tab.show().css({
+			left: left,
+			top: top
+		})
+
 		return
-	}
+	}*/
 
 	//创建locationTabView的界面
 	this.$tab = $("<div class='locationBox'>").css({
@@ -40,24 +55,22 @@ LocationTabView.prototype.load = function(index) {
 		border: '1px solid silver',
 		backgroundColor: 'white',
 		position: 'absolute',
-		left: '100px',
-		top: '30px'
+		left: left,
+		top: top
 
 	}).appendTo($('body')).append($("<ul class='cityList'>").css({
 
 		listStyleType: 'none'
 			//padding:0
-	})).hover(function(){
-		
+	})).hover(function() {
+
 		$(this).show()
-		
-	},function(){
-		
+
+	}, function() {
+
 		$(this).hide()
 	})
-	
 
-	
 	for(var keyName in this.datas) {
 
 		var aLi = $("<li>").append($("<span>").css({
@@ -75,7 +88,7 @@ LocationTabView.prototype.load = function(index) {
 		var cities = this.datas[keyName]
 
 		var lastClickSpan = 0
-		
+
 		for(var i = 0; i < cities.length; i++) {
 
 			var title = cities[i]
@@ -88,47 +101,42 @@ LocationTabView.prototype.load = function(index) {
 				textAlign: 'left',
 				lineHeight: '25px'
 
-			}).text(title).appendTo(aLi).click(function(){
+			}).text(title).appendTo(aLi).click(function() {
 				$('.header-location a').text($(this).text())
-				
+
 				$(this).css({
-					
-					backgroundColor:skinColor,
-					color:'white'
+
+					backgroundColor: skinColor,
+					color: 'white'
 				}).addClass('clicked')
-				
+
 				$(lastClickSpan).css({
-					
-					backgroundColor:'',
-					color:normalTextColor,
-					
+
+					backgroundColor: '',
+					color: normalTextColor,
+
 				}).removeClass('clicked')
-				
-				
+
 				lastClickSpan = $(this)
-				
-				
-			}).hover(function(){
-				
-				if($(this).attr('class') == 'clicked'){
-					$(this).css('color','white')
+
+			}).hover(function() {
+
+				if($(this).attr('class') == 'clicked') {
+					$(this).css('color', 'white')
+				} else {
+					$(this).css('color', skinColor)
 				}
-				else{
-					$(this).css('color',skinColor)
+
+			}, function() {
+
+				if($(this).attr('class') == 'clicked') {
+
+					$(this).css('color', 'white')
+				} else {
+
+					$(this).css('color', normalTextColor)
 				}
-				
-				
-			},function(){
-				
-				if($(this).attr('class') == 'clicked'){
-					
-					$(this).css('color','white')
-				}
-				else{
-					
-					$(this).css('color',normalTextColor)
-				}
-				
+
 			})
 		}
 
