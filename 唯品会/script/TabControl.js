@@ -15,6 +15,8 @@ function TabControl(){
 	
 	this.moreTabView = new MoreTabView()
 	
+	this.goods = new Goods()
+	
 	this.control()
 	
 	
@@ -38,4 +40,7 @@ TabControl.prototype.control = function(){
 		this.moreTabView.unload()
 		
 	}.bind(this))
+	
+	
+	this.goods.load()
 }
